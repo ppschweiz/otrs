@@ -5,6 +5,12 @@ RUN apt-get update && apt-get -y install libapache2-mod-perl2 libdbd-mysql-perl 
     libgd-text-perl libtext-csv-xs-perl libjson-xs-perl libgd-graph-perl libapache-dbi-perl libmail-imapclient-perl libyaml-libyaml-perl
 
 
+ENV LDAP_PORT_389_TCP_ADDR localhost
+ENV LDAP_BASEDN dc=piratenpartei,dc=ch
+ENV LDAP_UID uid
+ENV LDAP_USERNAME cn=bind,dc=piratenpartei,dc=ch
+ENV LDAP_PASSWORD changeme
+
 ENV MYSQL_PORT_3306_TCP_ADDR localhost
 ENV MYSQL_PORT_3306_TCP_PORT 3306
 ENV MYSQL_USERNAME otrs
