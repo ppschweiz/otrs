@@ -38,4 +38,8 @@ RUN echo "PerlPassEnv MYSQL_PASSWORD" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv MYSQL_DATABASE" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv SMTP_PORT_22_TCP_ADDR" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv SMTP_PORT_22_TCP_PORT" >> /etc/apache2/conf.d/otrs.conf
-
+RUN echo "PerlPassEnv LDAP_PORT_389_TCP_ADDR" >> /etc/apache2/conf.d/otrs.conf
+RUN echo "PerlPassEnv LDAP_BASEDN" >> /etc/apache2/conf.d/otrs.conf
+RUN echo "PerlPassEnv LDAP_UID" >> /etc/apache2/conf.d/otrs.conf
+RUN echo "PerlPassEnv LDAP_USERNAME" >> /etc/apache2/conf.d/otrs.conf
+RUN echo "PerlPassEnv LDAP_PASSWORD" >> /etc/apache2/conf.d/otrs.conf
