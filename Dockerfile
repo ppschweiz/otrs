@@ -2,7 +2,9 @@ FROM ppschweiz/apache
 
 RUN apt-get update && apt-get -y install libapache2-mod-perl2 libdbd-mysql-perl libtimedate-perl libnet-dns-perl \
     libnet-ldap-perl libio-socket-ssl-perl libpdf-api2-perl libdbd-mysql-perl libsoap-lite-perl \
-    libgd-text-perl libtext-csv-xs-perl libjson-xs-perl libgd-graph-perl libapache-dbi-perl libmail-imapclient-perl libyaml-libyaml-perl supervisor
+    libgd-text-perl libtext-csv-xs-perl libjson-xs-perl libgd-graph-perl libapache-dbi-perl libmail-imapclient-perl libyaml-libyaml-perl
+
+RUN apt-get install -y python-pip && pip install supervisor-stdout
 
 
 ENV LDAP_PORT_389_TCP_ADDR localhost
