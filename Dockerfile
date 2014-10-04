@@ -19,8 +19,8 @@ ENV MYSQL_DATABASE otrs
 ENV SMTP_PORT_22_TCP_ADDR mail-1-p.piratenpartei.ch
 ENV SMTP_PORT_22_TCP_PORT 25
 
-ADD otrs-3.2.9.tar.gz /opt/
-RUN ln -s /opt/otrs-3.2.9 /opt/otrs
+ADD otrs-3.2.16.tar.gz /opt/
+RUN ln -s /opt/otrs-3.2.16 /opt/otrs
 RUN useradd -r -d /opt/otrs/ -c 'OTRS user' otrs && usermod -G nogroup otrs
 
 COPY Config.pm /opt/otrs/Kernel/Config.pm
