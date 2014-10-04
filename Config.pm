@@ -67,6 +67,8 @@ sub Load {
     $Self->{'SecureMode'} =  '1';
     $Self->{'MinimumLogLevel'} =  'info';
     $Self->{'PostMasterMaxEmailSize'} =  40960;
+    $Self->{'SendmailModule'} = 'Kernel::System::Email::SMTP';
+    $Self->{'SendmailModule::Host'} = $ENV{'SMTP_PORT_25_TCP_ADDR'};
     
     $Self->{'AuthModule'} = 'Kernel::System::Auth::LDAP';
     $Self->{'AuthModule::UseSyncBackend'} = 'AuthSyncBackend';
