@@ -18,8 +18,8 @@ ENV MYSQL_PORT_3306_TCP_PORT 3306
 ENV MYSQL_USERNAME otrs
 ENV MYSQL_PASSWORD changeme
 ENV MYSQL_DATABASE otrs
-ENV SMTP_PORT_22_TCP_ADDR mail-1-p.piratenpartei.ch
-ENV SMTP_PORT_22_TCP_PORT 25
+ENV SMTP_PORT_25_TCP_ADDR mail-1-p.piratenpartei.ch
+ENV SMTP_PORT_25_TCP_PORT 25
 
 ADD otrs-3.2.16.tar.gz /opt/
 RUN ln -s /opt/otrs-3.2.16 /opt/otrs
@@ -38,8 +38,8 @@ RUN echo "PerlPassEnv MYSQL_PORT_3306_TCP_PORT" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv MYSQL_USERNAME" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv MYSQL_PASSWORD" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv MYSQL_DATABASE" >> /etc/apache2/conf.d/otrs.conf
-RUN echo "PerlPassEnv SMTP_PORT_22_TCP_ADDR" >> /etc/apache2/conf.d/otrs.conf
-RUN echo "PerlPassEnv SMTP_PORT_22_TCP_PORT" >> /etc/apache2/conf.d/otrs.conf
+RUN echo "PerlPassEnv SMTP_PORT_25_TCP_ADDR" >> /etc/apache2/conf.d/otrs.conf
+RUN echo "PerlPassEnv SMTP_PORT_25_TCP_PORT" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv LDAP_PORT_389_TCP_ADDR" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv LDAP_BASEDN" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv LDAP_UID" >> /etc/apache2/conf.d/otrs.conf
