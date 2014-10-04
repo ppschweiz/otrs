@@ -66,6 +66,7 @@ sub Load {
     $Self->{'FQDN'} =  'info.piratenpartei.ch';
     $Self->{'SecureMode'} =  '1';
     $Self->{'MinimumLogLevel'} =  'info';
+    $Self->{'PostMasterMaxEmailSize'} =  40960;
     
     $Self->{'AuthModule'} = 'Kernel::System::Auth::LDAP';
     $Self->{'AuthModule::UseSyncBackend'} = 'AuthSyncBackend';
