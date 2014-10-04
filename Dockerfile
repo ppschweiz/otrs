@@ -2,7 +2,7 @@ FROM ppschweiz/apache
 
 RUN apt-get update && apt-get -y install libapache2-mod-perl2 libdbd-mysql-perl libtimedate-perl libnet-dns-perl \
     libnet-ldap-perl libio-socket-ssl-perl libpdf-api2-perl libdbd-mysql-perl libsoap-lite-perl \
-    libgd-text-perl libtext-csv-xs-perl libjson-xs-perl libgd-graph-perl libapache-dbi-perl libmail-imapclient-perl libyaml-libyaml-perl
+    libgd-text-perl libtext-csv-xs-perl libjson-xs-perl libgd-graph-perl libapache-dbi-perl libmail-imapclient-perl libyaml-libyaml-perl supervisor
 
 RUN apt-get install -y python-pip && pip install supervisor-stdout
 
@@ -49,5 +49,6 @@ RUN echo "PerlPassEnv LDAP_PASSWORD" >> /etc/apache2/conf.d/otrs.conf
 COPY otrscron.sh /otrscron.sh
 COPY supervisord-apache2.conf /etc/supervisor/conf.d/
 COPY supervisord-otrscron.conf /etc/supervisor/conf.d/
+COPY supervisord-eventlistener.conf /etc/supervisor/conf.d/
 
 CMD ["supervisord", "-n"]
