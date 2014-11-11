@@ -47,8 +47,10 @@ RUN echo "PerlPassEnv LDAP_USERNAME" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv LDAP_PASSWORD" >> /etc/apache2/conf.d/otrs.conf
 
 COPY otrscron.sh /otrscron.sh
+COPY entrypoint.sh /entrypoint.sh
 COPY supervisord-apache2.conf /etc/supervisor/conf.d/
 COPY supervisord-otrscron.conf /etc/supervisor/conf.d/
 COPY supervisord-eventlistener.conf /etc/supervisor/conf.d/
 
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["supervisord", "-n"]
