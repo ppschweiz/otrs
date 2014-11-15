@@ -97,6 +97,7 @@ sub Load {
     # AuthSyncModule::LDAP::UserSyncRolesDefinition
     # (If "LDAP" was selected for AuthModule and you want to sync LDAP groups to otrs roles, define the following.)
     $Self->{AuthSyncModule::LDAP::UserSyncRolesDefinition} = {
+       'cn=Administration,dc=piratenpartei,dc=ch' => { 'Administration' => 1, },
        'cn=DI,dc=workgroups,dc=piratenpartei,dc=ch' => { 'AG DI' => 1, },
        'cn=KAMP,dc=workgroups,dc=piratenpartei,dc=ch' => { 'AG KAMP' => 1, },
        'cn=ROA,dc=workgroups,dc=piratenpartei,dc=ch' => { 'AG ROA' => 1, },
