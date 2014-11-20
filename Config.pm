@@ -122,7 +122,7 @@ sub Load {
        'cn=Board,l=bern,st=be,dc=piratenpartei,dc=ch' => { 'Board Bern' => 1, },
        'cn=Board,l=winterthur,st=zh,dc=piratenpartei,dc=ch' => { 'Board Winterthur' => 1, },
        'cn=Board,l=zurich,st=zh,dc=piratenpartei,dc=ch' => { 'Board Zürich' => 1, },
-       'cn=AnK,dc=piratenpartei,dc=ch' => { 'Antragskommission' => 1, },
+       'cn=PVP,dc=piratenpartei,dc=ch' => { 'Antragskommission' => 1, },
        'cn=PG,dc=piratenpartei,dc=ch' => { 'Pirate Court'=> 1, },
    };
 
