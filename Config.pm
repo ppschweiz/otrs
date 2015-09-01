@@ -94,38 +94,6 @@ sub Load {
     $Self->{AuthSyncModule::LDAP::AccessAttr} = 'member';
     $Self->{AuthSyncModule::LDAP::UserAttr} = 'DN';
 
-    # AuthSyncModule::LDAP::UserSyncRolesDefinition
-    # (If "LDAP" was selected for AuthModule and you want to sync LDAP groups to otrs roles, define the following.)
-    $Self->{AuthSyncModule::LDAP::UserSyncRolesDefinition} = {
-       'cn=Administration,dc=piratenpartei,dc=ch' => { 'Administration' => 1, },
-       'cn=DI,dc=workgroups,dc=piratenpartei,dc=ch' => { 'AG DI' => 1, },
-       'cn=KAMP,dc=workgroups,dc=piratenpartei,dc=ch' => { 'AG KAMP' => 1, },
-       'cn=ROA,dc=workgroups,dc=piratenpartei,dc=ch' => { 'AG ROA' => 1, },
-       'cn=TNT,dc=workgroups,dc=piratenpartei,dc=ch' => { 'AG TNT'=> 1, },
-       'cn=PR,dc=workgroups,dc=piratenpartei,dc=ch' => { 'AG PR'=> 1, },
-       'cn=Board,dc=piratenpartei,dc=ch' => { 'Board' => 1, },
-       'cn=Direction,cn=Board,dc=piratenpartei,dc=ch' => { 'Board' => 1, 'Direction' => 1,},
-       'cn=Presidium,cn=Board,dc=piratenpartei,dc=ch' => { 'Board' => 1, 'Presidium' => 1, },
-       'cn=Board,st=ag,dc=piratenpartei,dc=ch' => { 'Board AG' => 1, },
-       'cn=Board,st=bb,dc=piratenpartei,dc=ch' => { 'Board BB' => 1, },
-       'cn=Board,st=be,dc=piratenpartei,dc=ch' => { 'Board BE' => 1, },
-       'cn=Board,st=fr,dc=piratenpartei,dc=ch' => { 'Board FR' => 1, },
-       'cn=Board,st=ge,dc=piratenpartei,dc=ch' => { 'Board GE' => 1, },
-       'cn=Board,st=ne,dc=piratenpartei,dc=ch' => { 'Board NE' => 1, },
-       'cn=Board,st=os,dc=piratenpartei,dc=ch' => { 'Board OS' => 1, },
-       'cn=Board,st=ti,dc=piratenpartei,dc=ch' => { 'Board TI' => 1, },
-       'cn=Board,st=ts,dc=piratenpartei,dc=ch' => { 'Board TS' => 1, },
-       'cn=Board,st=vd,dc=piratenpartei,dc=ch' => { 'Board VD' => 1, },
-       'cn=Board,st=vs,dc=piratenpartei,dc=ch' => { 'Board VS' => 1, },
-       'cn=Board,st=zh,dc=piratenpartei,dc=ch' => { 'Board ZH' => 1, },
-       'cn=Board,st=zs,dc=piratenpartei,dc=ch' => { 'Board ZS' => 1, },
-       'cn=Board,l=bern,st=be,dc=piratenpartei,dc=ch' => { 'Board Bern' => 1, },
-       'cn=Board,l=winterthur,st=zh,dc=piratenpartei,dc=ch' => { 'Board Winterthur' => 1, },
-       'cn=Board,l=zurich,st=zh,dc=piratenpartei,dc=ch' => { 'Board Zürich' => 1, },
-       'cn=PVP,dc=piratenpartei,dc=ch' => { 'Antragskommission' => 1, },
-       'cn=PG,dc=piratenpartei,dc=ch' => { 'Pirate Court'=> 1, },
-   };
-
     # ---------------------------------------------------- #
 
     # ---------------------------------------------------- #
