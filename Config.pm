@@ -70,29 +70,7 @@ sub Load {
     $Self->{'SendmailModule'} = 'Kernel::System::Email::SMTP';
     $Self->{'SendmailModule::Host'} = $ENV{'SMTP_PORT_25_TCP_ADDR'};
     
-    $Self->{'AuthModule'} = 'Kernel::System::Auth::LDAP';
-    $Self->{'AuthModule::UseSyncBackend'} = 'AuthSyncBackend';
-    $Self->{'AuthModule::LDAP::Host'} = $ENV{'LDAP_PORT_389_TCP_ADDR'};
-    $Self->{'AuthModule::LDAP::BaseDN'} = $ENV{'LDAP_BASEDN'};
-    $Self->{'AuthModule::LDAP::UID'} = $ENV{'LDAP_UID'};
-
-    $Self->{'AuthModule::LDAP::SearchUserDN'} = $ENV{'LDAP_USERNAME'};
-    $Self->{'AuthModule::LDAP::SearchUserPw'} = $ENV{'LDAP_PASSWORD'};
-
-    $Self->{'AuthSyncModule'} = 'Kernel::System::Auth::Sync::LDAP';
-    $Self->{'AuthSyncModule::LDAP::Host'} = $ENV{'LDAP_PORT_389_TCP_ADDR'};
-    $Self->{'AuthSyncModule::LDAP::BaseDN'} = $ENV{'LDAP_BASEDN'};
-    $Self->{'AuthSyncModule::LDAP::UID'} = $ENV{'LDAP_UID'};
-    $Self->{'AuthSyncModule::LDAP::SearchUserDN'} = $ENV{'LDAP_USERNAME'};
-    $Self->{'AuthSyncModule::LDAP::SearchUserPw'} = $ENV{'LDAP_PASSWORD'};
-    $Self->{'AuthSyncModule::LDAP::UserSyncMap'} = {
-       # DB -> LDAP
-       UserFirstname => 'givenName',
-       UserLastname  => 'sn',
-       UserEmail     => 'mail',
-    };
-    $Self->{AuthSyncModule::LDAP::AccessAttr} = 'member';
-    $Self->{AuthSyncModule::LDAP::UserAttr} = 'DN';
+    $Self->{'AuthModule'} = 'Kernel::System::Auth::DB';
 
     # ---------------------------------------------------- #
 
