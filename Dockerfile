@@ -7,12 +7,6 @@ RUN apt-get update && apt-get -y install libapache2-mod-perl2 libdbd-mysql-perl 
 RUN apt-get install -y python-pip && pip install supervisor-stdout
 
 
-ENV LDAP_PORT_389_TCP_ADDR localhost
-ENV LDAP_BASEDN dc=piratenpartei,dc=ch
-ENV LDAP_UID uid
-ENV LDAP_USERNAME cn=bind,dc=piratenpartei,dc=ch
-ENV LDAP_PASSWORD changeme
-
 ENV MYSQL_PORT_3306_TCP_ADDR localhost
 ENV MYSQL_PORT_3306_TCP_PORT 3306
 ENV MYSQL_USERNAME otrs
@@ -40,11 +34,6 @@ RUN echo "PerlPassEnv MYSQL_PASSWORD" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv MYSQL_DATABASE" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv SMTP_PORT_25_TCP_ADDR" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv SMTP_PORT_25_TCP_PORT" >> /etc/apache2/conf.d/otrs.conf
-RUN echo "PerlPassEnv LDAP_PORT_389_TCP_ADDR" >> /etc/apache2/conf.d/otrs.conf
-RUN echo "PerlPassEnv LDAP_BASEDN" >> /etc/apache2/conf.d/otrs.conf
-RUN echo "PerlPassEnv LDAP_UID" >> /etc/apache2/conf.d/otrs.conf
-RUN echo "PerlPassEnv LDAP_USERNAME" >> /etc/apache2/conf.d/otrs.conf
-RUN echo "PerlPassEnv LDAP_PASSWORD" >> /etc/apache2/conf.d/otrs.conf
 
 COPY otrscron.sh /otrscron.sh
 COPY entrypoint.sh /entrypoint.sh
