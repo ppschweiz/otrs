@@ -2,7 +2,8 @@ FROM ppschweiz/apache
 
 RUN apt-get update && apt-get -y install libapache2-mod-perl2 libdbd-mysql-perl libtimedate-perl libnet-dns-perl \
     libnet-ldap-perl libio-socket-ssl-perl libpdf-api2-perl libdbd-mysql-perl libsoap-lite-perl \
-    libgd-text-perl libtext-csv-xs-perl libjson-xs-perl libgd-graph-perl libapache-dbi-perl libmail-imapclient-perl libyaml-libyaml-perl supervisor
+    libgd-text-perl libtext-csv-xs-perl libjson-xs-perl libgd-graph-perl libapache-dbi-perl libmail-imapclient-perl libyaml-libyaml-perl supervisor \
+    libarchive-zip-perl libcrypt-eksblowfish-perl libtemplate-perl
 
 RUN apt-get install -y python-pip && pip install supervisor-stdout
 
@@ -15,8 +16,8 @@ ENV MYSQL_DATABASE otrs
 ENV SMTP_PORT_25_TCP_ADDR mail-1-p.piratenpartei.ch
 ENV SMTP_PORT_25_TCP_PORT 25
 
-ADD otrs-3.3.14.tar.gz /opt/
-RUN ln -s /opt/otrs-3.3.14 /opt/otrs
+ADD otrs-4.0.18.tar.gz /opt/
+RUN ln -s /opt/otrs-4.0.18 /opt/otrs
 RUN useradd -r -d /opt/otrs/ -c 'OTRS user' otrs && usermod -G nogroup otrs
 
 COPY Config.pm /opt/otrs/Kernel/Config.pm
