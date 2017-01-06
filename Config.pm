@@ -72,6 +72,15 @@ sub Load {
     
     $Self->{'AuthModule'} = 'Kernel::System::Auth::DB';
 
+    $Self->{'PGP::Key::Password'} =  {
+       '50D7E35A' => $ENV{'GPG_PWD_50D7E35A'},
+       'B2C7B0F5' => $ENV{'GPG_PWD_B2C7B0F5'},
+       'D4CE5C2B' => $ENV{'GPG_PWD_D4CE5C2B'},
+       'EEC960A4' => $ENV{'GPG_PWD_EEC960A4'}
+    };
+    $Self->{'PGP'} =  '1';
+
+
     # ---------------------------------------------------- #
 
     # ---------------------------------------------------- #

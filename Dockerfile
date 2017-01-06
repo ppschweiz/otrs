@@ -15,6 +15,10 @@ ENV MYSQL_PASSWORD changeme
 ENV MYSQL_DATABASE otrs
 ENV SMTP_PORT_25_TCP_ADDR mail-1-p.piratenpartei.ch
 ENV SMTP_PORT_25_TCP_PORT 25
+ENV GPG_PWD_50D7E35A changeme
+ENV GPG_PWD_B2C7B0F5 changeme
+ENV GPG_PWD_D4CE5C2B changeme
+ENV GPG_PWD_EEC960A4 changeme
 
 ADD otrs-4.0.18.tar.gz /opt/
 RUN ln -s /opt/otrs-4.0.18 /opt/otrs
@@ -35,6 +39,10 @@ RUN echo "PerlPassEnv MYSQL_PASSWORD" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv MYSQL_DATABASE" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv SMTP_PORT_25_TCP_ADDR" >> /etc/apache2/conf.d/otrs.conf
 RUN echo "PerlPassEnv SMTP_PORT_25_TCP_PORT" >> /etc/apache2/conf.d/otrs.conf
+RUN echo "PerlPassEnv GPG_PWD_50D7E35A" >> /etc/apache2/conf.d/otrs.conf
+RUN echo "PerlPassEnv GPG_PWD_B2C7B0F5" >> /etc/apache2/conf.d/otrs.conf
+RUN echo "PerlPassEnv GPG_PWD_D4CE5C2B" >> /etc/apache2/conf.d/otrs.conf
+RUN echo "PerlPassEnv GPG_PWD_EEC960A4" >> /etc/apache2/conf.d/otrs.conf
 
 COPY otrscron.sh /otrscron.sh
 COPY entrypoint.sh /entrypoint.sh
