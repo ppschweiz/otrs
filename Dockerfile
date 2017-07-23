@@ -3,10 +3,10 @@ FROM ppschweiz/apache
 RUN apt-get update && apt-get -y install libapache2-mod-perl2 libdbd-mysql-perl libtimedate-perl libnet-dns-perl \
     libnet-ldap-perl libio-socket-ssl-perl libpdf-api2-perl libdbd-mysql-perl libsoap-lite-perl \
     libgd-text-perl libtext-csv-xs-perl libjson-xs-perl libgd-graph-perl libapache-dbi-perl libmail-imapclient-perl libyaml-libyaml-perl supervisor \
-    libarchive-zip-perl libcrypt-eksblowfish-perl libtemplate-perl
+    libarchive-zip-perl libcrypt-eksblowfish-perl libtemplate-perl \
+    libencode-hanextra-perl libxml-libxml-perl libxml-libxslt-perl
 
 RUN apt-get install -y python-pip && pip install supervisor-stdout
-
 
 ENV MYSQL_PORT_3306_TCP_ADDR localhost
 ENV MYSQL_PORT_3306_TCP_PORT 3306
@@ -20,13 +20,12 @@ ENV GPG_PWD_B2C7B0F5 changeme
 ENV GPG_PWD_D4CE5C2B changeme
 ENV GPG_PWD_EEC960A4 changeme
 
-ADD otrs-4.0.24.tar.gz /opt/
-RUN ln -s /opt/otrs-4.0.24 /opt/otrs
+ADD otrs-5.0.18.tar.gz /opt/
+RUN ln -s /opt/otrs-5.0.18 /opt/otrs
 RUN useradd -r -d /opt/otrs/ -c 'OTRS user' otrs && usermod -G nogroup otrs
 
 COPY Config.pm /opt/otrs/Kernel/Config.pm
-RUN cp /opt/otrs/Kernel/Config/GenericAgent.pm.dist /opt/otrs/Kernel/Config/GenericAgent.pm
-RUN /opt/otrs/bin/otrs.SetPermissions.pl /opt/otrs --otrs-user=otrs --otrs-group=nogroup --web-user=www-data --web-group=www-data
+RUN /opt/otrs/bin/otrs.SetPermissions.pl /opt/otrs --otrs-user=otrs --web-group=www-data
 RUN /opt/otrs/bin/otrs.CheckModules.pl
 
 RUN a2dissite 000-default
@@ -47,7 +46,6 @@ RUN echo "PerlPassEnv GPG_PWD_EEC960A4" >> /etc/apache2/conf.d/otrs.conf
 COPY otrscron.sh /otrscron.sh
 COPY entrypoint.sh /entrypoint.sh
 COPY supervisord-apache2.conf /etc/supervisor/conf.d/
-#COPY supervisord-otrscron.conf /etc/supervisor/conf.d/
 COPY supervisord-eventlistener.conf /etc/supervisor/conf.d/
 
 ENTRYPOINT ["/entrypoint.sh"]
