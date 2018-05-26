@@ -94,36 +94,12 @@ COPY Config.pm /opt/otrs/Kernel/Config.pm
 RUN /opt/otrs/bin/otrs.SetPermissions.pl /opt/otrs --otrs-user=otrs --web-group=www-data
 RUN /opt/otrs/bin/otrs.CheckModules.pl
 
-RUN echo " \
-Listen *:80\n \
-LoadModule access_compat_module modules/mod_access_compat.so\n \
-LoadModule alias_module modules/mod_alias.so\n \
-LoadModule deflate_module modules/mod_deflate.so\n \
-LoadModule filter_module modules/mod_filter.so\n \
-LoadModule headers_module modules/mod_headers.so\n \
-LoadModule mime_module modules/mod_mime.so\n \
-LoadModule perl_module modules/mod_perl.so\n \
-LoadModule version_module modules/mod_version.so\n \
-RedirectMatch ^/$ /otrs-web/\n \
-PerlPassEnv MYSQL_PORT_3306_TCP_ADDR\n \
-PerlPassEnv MYSQL_PORT_3306_TCP_PORT\n \
-PerlPassEnv MYSQL_USERNAME\n \
-PerlPassEnv MYSQL_PASSWORD\n \
-PerlPassEnv MYSQL_DATABASE\n \
-PerlPassEnv SMTP_PORT_25_TCP_ADDR\n \
-PerlPassEnv SMTP_PORT_25_TCP_PORT\n \
-PerlPassEnv GPG_PWD_50D7E35A\n \
-PerlPassEnv GPG_PWD_B2C7B0F5\n \
-PerlPassEnv GPG_PWD_D4CE5C2B\n \
-PerlPassEnv GPG_PWD_EEC960A4\n \
-" >> /opt/otrs/scripts/apache2-httpd.include.conf
-RUN ln -sf /opt/otrs/scripts/apache2-httpd.include.conf /usr/local/apache2/conf/httpd.conf
-
 COPY otrscron.sh /otrscron.sh
 COPY entrypoint.sh /entrypoint.sh
 COPY supervisord-apache2.conf /etc/supervisor/conf.d/
 COPY supervisord-eventlistener.conf /etc/supervisor/conf.d/
-EXPOSE 80/tcp
+COPY apache2-httpd.include.conf /opt/otrs/scripts/apache2-httpd.include.conf
+RUN ln -sf /opt/otrs/scripts/apache2-httpd.include.conf /usr/local/apache2/conf/httpd.conf
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["supervisord", "-n"]
