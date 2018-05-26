@@ -43,6 +43,8 @@ RUN echo "PerlPassEnv GPG_PWD_B2C7B0F5" >> /etc/apache2/sites-enabled/otrs.conf
 RUN echo "PerlPassEnv GPG_PWD_D4CE5C2B" >> /etc/apache2/sites-enabled/otrs.conf
 RUN echo "PerlPassEnv GPG_PWD_EEC960A4" >> /etc/apache2/sites-enabled/otrs.conf
 
+EXPOSE 80/tcp
+
 # Set required defaults
 ENV APACHE_LOCK_DIR /var/run
 ENV APACHE_PID_FILE /var/run/apache.pid
