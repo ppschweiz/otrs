@@ -20,8 +20,8 @@ ENV GPG_PWD_B2C7B0F5 changeme
 ENV GPG_PWD_D4CE5C2B changeme
 ENV GPG_PWD_EEC960A4 changeme
 
-ADD otrs-5.0.26.tar.gz /opt/
-RUN ln -s /opt/otrs-rel-5_0_26 /opt/otrs
+ADD otrs-5.0.34.tar.gz /opt/
+RUN ln -s /opt/otrs-rel-5_0_34 /opt/otrs
 RUN useradd -r -d /opt/otrs/ -c 'OTRS user' otrs && usermod -G nogroup otrs
 
 COPY Config.pm /opt/otrs/Kernel/Config.pm
