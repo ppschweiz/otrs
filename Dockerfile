@@ -6,7 +6,7 @@ RUN apt-get update && apt-get -y install apache2 libapache2-mod-perl2 libdbd-mys
     libarchive-zip-perl libcrypt-eksblowfish-perl libtemplate-perl \
     libencode-hanextra-perl libxml-libxml-perl libxml-libxslt-perl
 
-RUN apt-get install -y python-pip && pip install supervisor-stdout
+RUN apt-get install -y python-pip wget && pip install supervisor-stdout
 
 ENV MYSQL_PORT_3306_TCP_ADDR localhost
 ENV MYSQL_PORT_3306_TCP_PORT 3306
@@ -20,9 +20,17 @@ ENV GPG_PWD_B2C7B0F5 changeme
 ENV GPG_PWD_D4CE5C2B changeme
 ENV GPG_PWD_EEC960A4 changeme
 
-ADD otrs-5.0.34.tar.gz /opt/
-RUN ln -s /opt/otrs-rel-5_0_34 /opt/otrs
-RUN useradd -r -d /opt/otrs/ -c 'OTRS user' otrs && usermod -G nogroup otrs
+ENV OTRS_VERSION 5.0.39
+ENV OTRS_SHA512 87ab5c9141cbbb92bacf8bb1eee09c6b2d049e4018312ed754dabc86421eb062735be491d78084e597801d8fb959a74a8ef6af61b60d3cff98896949e3eb3193
+
+RUN set -eux; \
+	wget -O otrs.tar.bz2 "https://ftp.otrs.org/pub/otrs/otrs-${OTRS_VERSION}.tar.bz2"; \
+	echo "$OTRS_SHA512 *otrs.tar.bz2" | sha512sum -c -; \
+	mkdir /opt/otrs; \
+	tar -xf otrs.tar.bz2 --strip-components=1 -C /opt/otrs; \
+	rm otrs.tar.bz2; \
+	useradd -r -d /opt/otrs -c 'OTRS user' otrs; \
+	usermod -G nogroup otrs
 
 COPY Config.pm /opt/otrs/Kernel/Config.pm
 RUN /opt/otrs/bin/otrs.SetPermissions.pl /opt/otrs --otrs-user=otrs --web-group=www-data
