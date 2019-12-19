@@ -75,18 +75,20 @@ RUN /opt/otrs/bin/otrs.CheckModules.pl
 
 RUN a2dissite 000-default
 RUN ln -s /opt/otrs/scripts/apache2-httpd.include.conf /etc/apache2/sites-enabled/otrs.conf
-RUN echo "RedirectMatch ^/$ /otrs-web/" >> /etc/apache2/sites-enabled/otrs.conf
-RUN echo "PerlPassEnv MYSQL_PORT_3306_TCP_ADDR" >> /etc/apache2/sites-enabled/otrs.conf
-RUN echo "PerlPassEnv MYSQL_PORT_3306_TCP_PORT" >> /etc/apache2/sites-enabled/otrs.conf
-RUN echo "PerlPassEnv MYSQL_USERNAME" >> /etc/apache2/sites-enabled/otrs.conf
-RUN echo "PerlPassEnv MYSQL_PASSWORD" >> /etc/apache2/sites-enabled/otrs.conf
-RUN echo "PerlPassEnv MYSQL_DATABASE" >> /etc/apache2/sites-enabled/otrs.conf
-RUN echo "PerlPassEnv SMTP_PORT_25_TCP_ADDR" >> /etc/apache2/sites-enabled/otrs.conf
-RUN echo "PerlPassEnv SMTP_PORT_25_TCP_PORT" >> /etc/apache2/sites-enabled/otrs.conf
-RUN echo "PerlPassEnv GPG_PWD_50D7E35A" >> /etc/apache2/sites-enabled/otrs.conf
-RUN echo "PerlPassEnv GPG_PWD_B2C7B0F5" >> /etc/apache2/sites-enabled/otrs.conf
-RUN echo "PerlPassEnv GPG_PWD_D4CE5C2B" >> /etc/apache2/sites-enabled/otrs.conf
-RUN echo "PerlPassEnv GPG_PWD_EEC960A4" >> /etc/apache2/sites-enabled/otrs.conf
+RUN { \
+		echo 'RedirectMatch ^/$ /otrs-web/'; \
+		echo 'PerlPassEnv MYSQL_PORT_3306_TCP_ADDR'; \
+		echo 'PerlPassEnv MYSQL_PORT_3306_TCP_PORT'; \
+		echo 'PerlPassEnv MYSQL_USERNAME'; \
+		echo 'PerlPassEnv MYSQL_PASSWORD'; \
+		echo 'PerlPassEnv MYSQL_DATABASE'; \
+		echo 'PerlPassEnv SMTP_PORT_25_TCP_ADDR'; \
+		echo 'PerlPassEnv SMTP_PORT_25_TCP_PORT'; \
+		echo 'PerlPassEnv GPG_PWD_50D7E35A'; \
+		echo 'PerlPassEnv GPG_PWD_B2C7B0F5'; \
+		echo 'PerlPassEnv GPG_PWD_D4CE5C2B'; \
+		echo 'PerlPassEnv GPG_PWD_EEC960A4'; \
+	} >> /etc/apache2/sites-enabled/otrs.conf
 
 EXPOSE 80/tcp
 
