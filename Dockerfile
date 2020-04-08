@@ -56,7 +56,7 @@ RUN set -eux; \
 		wget \
 	; \
 	rm -rf /var/lib/apt/lists/*; \
-	wget -O otrs.tar.bz2 "https://ftp.otrs.org/pub/otrs/otrs-${OTRS_VERSION}.tar.bz2"; \
+	wget -nv -O otrs.tar.bz2 "https://ftp.otrs.org/pub/otrs/otrs-${OTRS_VERSION}.tar.bz2"; \
 	echo "$OTRS_SHA512 *otrs.tar.bz2" | sha512sum -c -; \
 	mkdir /opt/otrs; \
 	tar -xf otrs.tar.bz2 --strip-components=1 -C /opt/otrs; \
