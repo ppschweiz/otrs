@@ -16,6 +16,8 @@ RUN set -eux; \
 		libio-socket-ssl-perl \
 		libjson-xs-perl \
 		libmail-imapclient-perl \
+		libmoo-perl \
+		libnamespace-clean-perl \
 		libnet-dns-perl \
 		libnet-ldap-perl \
 		libpdf-api2-perl \
@@ -105,4 +107,4 @@ COPY supervisord-apache2.conf /etc/supervisor/conf.d/
 COPY supervisord-eventlistener.conf /etc/supervisor/conf.d/
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["supervisord", "-n"]
+CMD ["supervisord", "-n", "-c" , "/etc/supervisor/supervisord.conf"]
