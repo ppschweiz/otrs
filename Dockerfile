@@ -8,6 +8,7 @@ RUN set -eux; \
 		libapache2-mod-perl2 \
 		libarchive-zip-perl \
 		libcrypt-eksblowfish-perl \
+		libdatetime-perl \
 		libdbd-mysql-perl \
 		libdbd-mysql-perl \
 		libencode-hanextra-perl \
@@ -29,6 +30,7 @@ RUN set -eux; \
 		libxml-libxslt-perl \
 		libyaml-libyaml-perl \
 		python-pip \
+		python-setuptools \
 		supervisor \
 	; \
 	rm -rf /var/lib/apt/lists/*
@@ -47,8 +49,8 @@ ENV GPG_PWD_B2C7B0F5 changeme
 ENV GPG_PWD_D4CE5C2B changeme
 ENV GPG_PWD_EEC960A4 changeme
 
-ENV OTRS_VERSION 5.0.42
-ENV OTRS_SHA512 f3a2046462405bac4d969a34746ffbed237f05116e98423786c769aad5ba304050a5f598c24621b0f48b88542b6ee0d1c0601ec55ff81eee05cbeaf974506f23
+ENV OTRS_VERSION 6.0.28
+ENV OTRS_SHA512 c41e018014a4e47c957c84dbf6a3e827b4837618788f439e258531aa9d6357732d5b2b54efc91a125ca1a2251cea8e87f5cef5ee9d1ffead07146e3698908d96
 
 RUN set -eux; \
 	savedAptMark="$(apt-mark showmanual)"; \
