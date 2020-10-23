@@ -29,13 +29,9 @@ RUN set -eux; \
 		libxml-libxml-perl \
 		libxml-libxslt-perl \
 		libyaml-libyaml-perl \
-		python-pip \
-		python-setuptools \
 		supervisor \
 	; \
 	rm -rf /var/lib/apt/lists/*
-
-RUN pip install supervisor-stdout
 
 ENV MYSQL_PORT_3306_TCP_ADDR localhost
 ENV MYSQL_PORT_3306_TCP_PORT 3306
@@ -106,7 +102,6 @@ ENV APACHE_LOG_DIR /var/log
 COPY otrscron.sh /otrscron.sh
 COPY entrypoint.sh /entrypoint.sh
 COPY supervisord-apache2.conf /etc/supervisor/conf.d/
-COPY supervisord-eventlistener.conf /etc/supervisor/conf.d/
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["supervisord", "-n", "-c" , "/etc/supervisor/supervisord.conf"]
