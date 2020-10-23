@@ -1,5 +1,7 @@
-#!/bin/bash
-set -e
+#!/bin/sh
+
+set -eu
+
 su -s /usr/bin/perl otrs /opt/otrs/bin/otrs.Console.pl Maint::Config::Rebuild
 su -s /usr/bin/perl otrs /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
 /opt/otrs/bin/otrs.SetPermissions.pl /opt/otrs --otrs-user=www-data --web-group=www-data

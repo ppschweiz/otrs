@@ -69,7 +69,7 @@ sub Load {
     $Self->{'PostMasterMaxEmailSize'} =  40960;
     $Self->{'SendmailModule'} = 'Kernel::System::Email::SMTP';
     $Self->{'SendmailModule::Host'} = $ENV{'SMTP_PORT_25_TCP_ADDR'};
-    
+
     $Self->{'AuthModule'} = 'Kernel::System::Auth::DB';
 
     $Self->{'PGP::Key::Password'} =  {
