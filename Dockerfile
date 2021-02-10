@@ -45,8 +45,8 @@ ENV GPG_PWD_B2C7B0F5 changeme
 ENV GPG_PWD_D4CE5C2B changeme
 ENV GPG_PWD_EEC960A4 changeme
 
-ENV OTRS_VERSION 6.0.30
-ENV OTRS_SHA512 6cb10bde67fc039dce6d0aca359972ad51f541891022c0ca3785bac295fbdbe734da462f3f6937ff6c9730e6f9efb87af21d2ce00c6f3a08d51eaf74e54c40f6
+ENV OTRS_VERSION 6.0.32
+ENV OTRS_SHA512 2e75864e1e2b5d29aa2820f5dc4a1388ef193407aa933be5901fd6b22a0ed94998745539bc22cb8f80d637b753083319f43e70991a2c4a62e351f70cee23a5b2
 
 RUN set -eux; \
 	savedAptMark="$(apt-mark showmanual)"; \
@@ -56,7 +56,7 @@ RUN set -eux; \
 		wget \
 	; \
 	rm -rf /var/lib/apt/lists/*; \
-	wget -nv -O otrs.tar.bz2 "https://ftp.otrs.org/pub/otrs/otrs-${OTRS_VERSION}.tar.bz2"; \
+	wget -nv -O otrs.tar.bz2 "https://download.znuny.org/releases/znuny-${OTRS_VERSION}.tar.bz2"; \
 	echo "$OTRS_SHA512 *otrs.tar.bz2" | sha512sum -c -; \
 	mkdir /opt/otrs; \
 	tar -xf otrs.tar.bz2 --strip-components=1 -C /opt/otrs; \
