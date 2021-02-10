@@ -1,4 +1,4 @@
-FROM debian:jessie-slim
+FROM debian:buster-slim
 
 RUN set -eux; \
 	apt-get update; \
@@ -33,6 +33,7 @@ RUN set -eux; \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
+ENV APACHE_RUN_DIR /var/run/apache2
 ENV MYSQL_PORT_3306_TCP_ADDR localhost
 ENV MYSQL_PORT_3306_TCP_PORT 3306
 ENV MYSQL_USERNAME otrs
