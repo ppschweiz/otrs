@@ -4,6 +4,7 @@ RUN set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 		apache2 \
+		gnupg \
 		libapache-dbi-perl \
 		libapache2-mod-perl2 \
 		libarchive-zip-perl \
