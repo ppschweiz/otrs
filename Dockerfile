@@ -9,6 +9,7 @@ RUN set -eux; \
 		libapache2-mod-perl2 \
 		libarchive-zip-perl \
 		libcrypt-eksblowfish-perl \
+		libcss-minifier-xs-perl \
 		libdatetime-perl \
 		libdbd-mysql-perl \
 		libdbd-mysql-perl \
@@ -16,6 +17,7 @@ RUN set -eux; \
 		libgd-graph-perl \
 		libgd-text-perl \
 		libio-socket-ssl-perl \
+		libjavascript-minifier-xs-perl \
 		libjson-xs-perl \
 		libmail-imapclient-perl \
 		libmoo-perl \
