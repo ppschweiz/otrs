@@ -66,7 +66,7 @@ RUN set -eux; \
 	tar -xf otrs.tar.bz2 --strip-components=1 -C /opt/otrs; \
 	rm otrs.tar.bz2; \
 	useradd -r -d /opt/otrs -c 'OTRS user' otrs; \
-	usermod -G nogroup otrs; \
+	usermod -G www-data otrs; \
 	\
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
 	apt-mark auto '.*' > /dev/null; \
