@@ -32,7 +32,6 @@ RUN set -eux; \
 		libxml-libxml-perl \
 		libxml-libxslt-perl \
 		libyaml-libyaml-perl \
-		supervisor \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -105,7 +104,6 @@ ENV APACHE_LOG_DIR /var/log
 
 COPY otrscron.sh /otrscron.sh
 COPY entrypoint.sh /entrypoint.sh
-COPY supervisord-apache2.conf /etc/supervisor/conf.d/
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["supervisord", "-n", "-c" , "/etc/supervisor/supervisord.conf"]
+CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
