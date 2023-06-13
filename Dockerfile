@@ -13,6 +13,7 @@ RUN set -eux; \
 		libdatetime-perl \
 		libdbd-mysql-perl \
 		libdbd-mysql-perl \
+		libdbd-pg-perl \
 		libencode-hanextra-perl \
 		libgd-graph-perl \
 		libgd-text-perl \
