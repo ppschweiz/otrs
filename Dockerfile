@@ -18,6 +18,7 @@ RUN set -eux; \
 		libencode-hanextra-perl \
 		libgd-graph-perl \
 		libgd-text-perl \
+		libical-parser-perl \
 		libio-socket-ssl-perl \
 		libjavascript-minifier-xs-perl \
 		libjson-xs-perl \
@@ -50,8 +51,8 @@ ENV GPG_PWD_B2C7B0F5 changeme
 ENV GPG_PWD_D4CE5C2B changeme
 ENV GPG_PWD_EEC960A4 changeme
 
-ENV OTRS_VERSION 6.3.4
-ENV OTRS_SHA512 f4695b5390fb29f03a991d1f261c8dfa360fad8381efafef950388352a4405be74064c23d3b5f43f6d99ab13ac092cd51b5a370036bb4579caec45d9658c4be4
+ENV OTRS_VERSION 6.4.5
+ENV OTRS_SHA512 8425e1f4f6a7927af006e06691a2a7009b4ee7613db0555a2d0bf3dd6d4c052a502c39a589697735137b2477684bc0a26a7d459d8f29ff7d98c2b2e674e2f2d5
 
 RUN set -eux; \
 	savedAptMark="$(apt-mark showmanual)"; \
