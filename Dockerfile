@@ -8,6 +8,7 @@ RUN set -eux; \
 		libapache-dbi-perl \
 		libapache2-mod-perl2 \
 		libarchive-zip-perl \
+		libauthen-sasl-perl \
 		libcrypt-eksblowfish-perl \
 		libcss-minifier-xs-perl \
 		libdatetime-perl \
@@ -49,8 +50,8 @@ ENV GPG_PWD_B2C7B0F5 changeme
 ENV GPG_PWD_D4CE5C2B changeme
 ENV GPG_PWD_EEC960A4 changeme
 
-ENV OTRS_VERSION 6.2.2
-ENV OTRS_SHA512 1a0ffc186450292998cdd054859543f9c093fc7eff898f17a8d1d43eb06296450aeae260a173b86aea9271baa272172ead8b539528b89c2bb7edcddfd0cb0c2f
+ENV OTRS_VERSION 6.3.4
+ENV OTRS_SHA512 f4695b5390fb29f03a991d1f261c8dfa360fad8381efafef950388352a4405be74064c23d3b5f43f6d99ab13ac092cd51b5a370036bb4579caec45d9658c4be4
 
 RUN set -eux; \
 	savedAptMark="$(apt-mark showmanual)"; \
