@@ -67,8 +67,11 @@ sub Load {
     $Self->{'SecureMode'} =  '1';
     $Self->{'MinimumLogLevel'} =  'info';
     $Self->{'PostMasterMaxEmailSize'} =  40960;
-    $Self->{'SendmailModule'} = 'Kernel::System::Email::SMTP';
+    $Self->{'SendmailModule'} = 'Kernel::System::Email::SMTPTLS';
+    $Self->{'SendmailModule::AuthUser'} = $ENV{'SMTP_USER'};
+    $Self->{'SendmailModule::AuthPassword'} = $ENV{'SMTP_PASS'};
     $Self->{'SendmailModule::Host'} = $ENV{'SMTP_PORT_25_TCP_ADDR'};
+    $Self->{'SendmailModule::Port'} = $ENV{'SMTP_PORT_25_TCP_PORT'};
 
     $Self->{'AuthModule'} = 'Kernel::System::Auth::DB';
 
