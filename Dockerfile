@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 RUN set -eux; \
 	apt-get update; \
@@ -11,6 +11,7 @@ RUN set -eux; \
 		libauthen-sasl-perl \
 		libcrypt-eksblowfish-perl \
 		libcss-minifier-xs-perl \
+		libdata-uuid-perl \
 		libdatetime-perl \
 		libdbd-mysql-perl \
 		libdbd-mysql-perl \
