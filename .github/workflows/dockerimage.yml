@@ -1,3 +1,4 @@
+---
 name: Docker Image CI
 on:
   pull_request:
@@ -9,18 +10,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
 
-    - name: Cleanup
-      run: docker system prune --all --force --volumes
+      - name: Cleanup
+        run: docker system prune --all --force --volumes
 
-    - name: Happy Eyeballs
-      run: wget -qO- 'https://github.com/tianon/pgp-happy-eyeballs/raw/master/hack-my-builds.sh' | bash
+      - name: Build the Docker image
+        run: docker build --tag otrs:$(date +%s) .
 
-    - name: Build the Docker image
-      run: docker build --tag otrs:$(date +%s) .
-
-    - name: Show images
-      run: docker images
+      - name: Show images
+        run: docker images
